@@ -1,0 +1,9 @@
+detectors:
+  IrresponsibleModule:
+    enabled: false
+
+  LongParameterList:
+    enabled: false
+
+  TooManyStatements:
+    enabled: false
