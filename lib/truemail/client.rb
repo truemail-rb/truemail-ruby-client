@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'truemail/client/version'
 
 module Truemail
