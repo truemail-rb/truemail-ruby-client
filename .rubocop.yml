@@ -28,6 +28,9 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+Style/ParallelAssignment:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 

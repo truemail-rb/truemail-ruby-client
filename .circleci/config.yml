@@ -9,7 +9,7 @@ references:
   restore_bundle_cache: &restore_bundle_cache
     restore_cache:
       keys:
-        - truemail-ruby-client-{{ checksum "truemail-ruby-client.gemspec" }}
+        - truemail-ruby-client-{{ checksum "truemail-client.gemspec" }}
 
   bundle_install: &bundle_install
     run:
@@ -18,7 +18,7 @@ references:
 
   save_bundle_cache: &save_bundle_cache
     save_cache:
-      key: truemail-ruby-client-{{ checksum "truemail-ruby-client.gemspec" }}
+      key: truemail-ruby-client-{{ checksum "truemail-client.gemspec" }}
       paths:
         - vendor/bundle
 
