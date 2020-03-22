@@ -7,3 +7,14 @@ detectors:
 
   TooManyStatements:
     enabled: false
+
+  Attribute:
+    exclude:
+      - Truemail::Client::Configuration#secure_connection
+
+  ControlParameter:
+    exclude:
+      - Truemail::Client::Configuration#raise_unless
+
+exclude_paths:
+  - spec/support/helpers

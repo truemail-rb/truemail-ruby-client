@@ -15,9 +15,11 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.include ConfigurationHelper
   config.example_status_persistence_file_path = '.rspec_status'
   config.disable_monkey_patching!
   config.order = :random
+  config.before { Truemail::Client.reset_configuration! }
 
   Kernel.srand(config.seed)
 end
