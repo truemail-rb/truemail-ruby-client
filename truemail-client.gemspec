@@ -26,6 +26,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'bundler-audit', '~> 0.6.1'
   spec.add_development_dependency 'fasterer', '~> 0.8.2'
+  spec.add_development_dependency 'ffaker', '~> 2.14'
+  spec.add_development_dependency 'json_matchers', '~> 0.11.1'
   spec.add_development_dependency 'overcommit', '~> 0.52.1'
   spec.add_development_dependency 'pry-byebug', '~> 3.8'
   spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.1'
@@ -33,5 +35,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.9'
   spec.add_development_dependency 'rubocop', '~> 0.80.1'
   spec.add_development_dependency 'rubocop-rspec', '~> 1.38', '>= 1.38.1'
+  spec.add_development_dependency 'webmock', '~> 3.8', '>= 3.8.3'
   spec.add_development_dependency 'simplecov', '~> 0.17.1'
 end

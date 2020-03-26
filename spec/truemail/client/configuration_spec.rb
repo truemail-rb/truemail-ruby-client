@@ -3,8 +3,8 @@
 RSpec.describe Truemail::Client::Configuration do
   subject(:configuration_instance) { described_class.new }
 
-  let(:host) { 'example.com' }
-  let(:token) { 'some_token' }
+  let(:host) { FFaker::Internet.domain_name }
+  let(:token) { create_token }
 
   describe 'defined constants' do
     specify { expect(described_class).to be_const_defined(:DEFAULT_PORT) }
