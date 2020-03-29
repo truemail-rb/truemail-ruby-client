@@ -1,23 +1,17 @@
 require:
   - rubocop-rspec
+  - rubocop-performance
 
 AllCops:
   DisplayCopNames:    true
   DisplayStyleGuide:  true
-  StyleGuideCopsOnly: true
   TargetRubyVersion:  2.5
-
-Layout/LineLength:
-  Max: 140
 
 Metrics/ClassLength:
   Max: 150
 
 Metrics/MethodLength:
   Max: 15
-
-Metrics/AbcSize:
-  Enabled: false
 
 Metrics/BlockLength:
   Enabled: false
@@ -28,7 +22,10 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-Style/ParallelAssignment:
+Naming/VariableNumber:
+  Enabled: false
+
+Naming/RescuedExceptionsVariableName:
   Enabled: false
 
 Style/Documentation:
@@ -38,6 +35,9 @@ Style/DoubleNegation:
   Enabled: false
 
 Style/EmptyCaseCondition:
+  Enabled: false
+
+Style/ParallelAssignment:
   Enabled: false
 
 Style/RescueStandardError:
@@ -51,6 +51,9 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Enabled: false
+
+Layout/LineLength:
+  Max: 140
 
 Layout/ClassStructure:
   Enabled: true
@@ -74,6 +77,12 @@ Layout/ClassStructure:
       - protected_methods
       - private_methods
 
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Lint/NonDeterministicRequireOrder:
+  Enabled: false
+
 RSpec/ExampleLength:
   Enabled: false
 
@@ -93,4 +102,7 @@ RSpec/AnyInstance:
   Enabled: false
 
 RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MultipleDescribes:
   Enabled: false
