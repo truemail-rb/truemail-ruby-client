@@ -1,0 +1,211 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "readOnly": false,
+    "writeOnly": false,
+    "minProperties": 0,
+    "title": "The Root Schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "additionalProperties": false,
+    "required": [
+        "configuration",
+        "date",
+        "email",
+        "errors",
+        "smtp_debug",
+        "success",
+        "validation_type"
+    ],
+    "properties": {
+        "configuration": {
+            "$id": "#/properties/configuration",
+            "type": "object",
+            "readOnly": false,
+            "writeOnly": false,
+            "minProperties": 0,
+            "title": "The Configuration Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+                {
+                    "whitelist_validation": false,
+                    "blacklisted_domains": null,
+                    "validation_type_by_domain": null,
+                    "smtp_error_body_pattern": "default gem value",
+                    "smtp_safe_check": true,
+                    "whitelisted_domains": null,
+                    "email_pattern": "default gem value"
+                }
+            ],
+            "additionalProperties": false,
+            "required": [
+                "blacklisted_domains",
+                "email_pattern",
+                "smtp_error_body_pattern",
+                "smtp_safe_check",
+                "validation_type_by_domain",
+                "whitelist_validation",
+                "whitelisted_domains"
+            ],
+            "properties": {
+                "blacklisted_domains": {
+                    "$id": "#/properties/configuration/properties/blacklisted_domains",
+                    "readOnly": false,
+                    "writeOnly": false,
+                    "title": "The Blacklisted_domains Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": null,
+                    "examples": [
+                        null
+                    ]
+                },
+                "email_pattern": {
+                    "$id": "#/properties/configuration/properties/email_pattern",
+                    "type": "string",
+                    "readOnly": false,
+                    "writeOnly": false,
+                    "minLength": 0,
+                    "title": "The Email_pattern Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "default gem value"
+                    ]
+                },
+                "smtp_error_body_pattern": {
+                    "$id": "#/properties/configuration/properties/smtp_error_body_pattern",
+                    "type": "string",
+                    "readOnly": false,
+                    "writeOnly": false,
+                    "minLength": 0,
+                    "title": "The Smtp_error_body_pattern Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                        "default gem value"
+                    ]
+                },
+                "smtp_safe_check": {
+                    "$id": "#/properties/configuration/properties/smtp_safe_check",
+                    "type": "boolean",
+                    "readOnly": false,
+                    "writeOnly": false,
+                    "title": "The Smtp_safe_check Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        true
+                    ]
+                },
+                "validation_type_by_domain": {
+                    "$id": "#/properties/configuration/properties/validation_type_by_domain",
+                    "readOnly": false,
+                    "writeOnly": false,
+                    "title": "The Validation_type_by_domain Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": null,
+                    "examples": [
+                        null
+                    ]
+                },
+                "whitelist_validation": {
+                    "$id": "#/properties/configuration/properties/whitelist_validation",
+                    "type": "boolean",
+                    "readOnly": false,
+                    "writeOnly": false,
+                    "title": "The Whitelist_validation Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                        false
+                    ]
+                },
+                "whitelisted_domains": {
+                    "$id": "#/properties/configuration/properties/whitelisted_domains",
+                    "readOnly": false,
+                    "writeOnly": false,
+                    "title": "The Whitelisted_domains Schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": null,
+                    "examples": [
+                        null
+                    ]
+                }
+            }
+        },
+        "date": {
+            "$id": "#/properties/date",
+            "type": "string",
+            "readOnly": false,
+            "writeOnly": false,
+            "minLength": 0,
+            "title": "The Date Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "2020-03-28 22:25:36 +0200"
+            ]
+        },
+        "email": {
+            "$id": "#/properties/email",
+            "type": "string",
+            "readOnly": false,
+            "writeOnly": false,
+            "minLength": 0,
+            "title": "The Email Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "mikel.rice@effertz.biz"
+            ]
+        },
+        "errors": {
+            "$id": "#/properties/errors",
+            "readOnly": false,
+            "writeOnly": false,
+            "title": "The Errors Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+                null
+            ]
+        },
+        "smtp_debug": {
+            "$id": "#/properties/smtp_debug",
+            "readOnly": false,
+            "writeOnly": false,
+            "title": "The Smtp_debug Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": null,
+            "examples": [
+                null
+            ]
+        },
+        "success": {
+            "$id": "#/properties/success",
+            "type": "boolean",
+            "readOnly": false,
+            "writeOnly": false,
+            "title": "The Success Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+                true
+            ]
+        },
+        "validation_type": {
+            "$id": "#/properties/validation_type",
+            "type": "string",
+            "readOnly": false,
+            "writeOnly": false,
+            "minLength": 0,
+            "title": "The Validation_type Schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "smtp"
+            ]
+        }
+    }
+}

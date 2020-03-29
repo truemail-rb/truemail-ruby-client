@@ -1,0 +1,21 @@
+detectors:
+  IrresponsibleModule:
+    enabled: false
+
+  LongParameterList:
+    enabled: false
+
+  TooManyStatements:
+    enabled: false
+
+  Attribute:
+    exclude:
+      - Truemail::Client::Configuration#secure_connection
+
+  ControlParameter:
+    exclude:
+      - Truemail::Client#raise_unless
+      - Truemail::Client::Configuration#raise_unless
+
+exclude_paths:
+  - spec/support/helpers
