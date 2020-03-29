@@ -14,6 +14,7 @@ detectors:
 
   ControlParameter:
     exclude:
+      - Truemail::Client#raise_unless
       - Truemail::Client::Configuration#raise_unless
 
 exclude_paths:

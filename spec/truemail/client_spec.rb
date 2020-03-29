@@ -3,11 +3,12 @@
 RSpec.describe Truemail::Client do
   describe 'defined constants' do
     specify { expect(described_class).to be_const_defined(:INCOMPLETE_CONFIG) }
+    specify { expect(described_class).to be_const_defined(:NOT_CONFIGURED) }
   end
 
   describe 'global configuration methods' do
-    let(:host) { 'example.com' }
-    let(:token) { 'some_token' }
+    let(:host) { FFaker::Internet.domain_name }
+    let(:token) { create_token }
     let(:config_block) { configuration_block(host: host, token: token) }
 
     describe '.configure' do
@@ -69,7 +70,7 @@ RSpec.describe Truemail::Client do
         specify { expect(configuration).to be_instance_of(Truemail::Client::Configuration) }
 
         it 'accepts to rewrite current configuration settings' do
-          secure_connection, new_host, port, new_token = true, 'new.com', 8080, 'new_token'
+          secure_connection, new_host, port, new_token = true, FFaker::Internet.domain_name, 8080, create_token
 
           expect do
             configuration.tap(&configuration_block(
@@ -98,6 +99,30 @@ RSpec.describe Truemail::Client do
         expect { described_class.reset_configuration! }
           .to change(described_class, :configuration)
           .from(be_instance_of(Truemail::Client::Configuration)).to(nil)
+      end
+    end
+  end
+
+  describe '.validate' do
+    subject(:validate) { described_class.validate(email) }
+
+    let(:email) { FFaker::Internet.email }
+    let(:http_instance) { instance_double('Http') }
+
+    context 'when global configuration was set' do
+      before { configure_client }
+
+      it 'creates http instance, sends request' do
+        expect(Truemail::Client::Http).to receive(:new).with(email).and_return(http_instance)
+        expect(http_instance).to receive(:run)
+        validate
+      end
+    end
+
+    context 'when global configuration was not set' do
+      specify do
+        expect { validate }
+          .to raise_error(Truemail::Client::Configuration::Error, Truemail::Client::NOT_CONFIGURED)
       end
     end
   end
