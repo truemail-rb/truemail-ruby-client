@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RequestHelper
-  def have_sent_request_with(**request_settings)
+  def have_sent_request_with(**request_settings) # rubocop:disable Metrics/AbcSize
     request = Request.new(**request_settings)
 
     HOST_PARAMS.each do |attribute|
@@ -32,13 +32,13 @@ module RequestHelper
       status: 200,
       body: {
         configuration: {
-            blacklisted_domains: nil,
-            email_pattern: 'default gem value',
-            smtp_error_body_pattern: 'default gem value',
-            smtp_safe_check: true,
-            validation_type_by_domain: nil,
-            whitelist_validation: false,
-            whitelisted_domains: nil
+          blacklisted_domains: nil,
+          email_pattern: 'default gem value',
+          smtp_error_body_pattern: 'default gem value',
+          smtp_safe_check: true,
+          validation_type_by_domain: nil,
+          whitelist_validation: false,
+          whitelisted_domains: nil
         },
         date: Time.now,
         email: email,

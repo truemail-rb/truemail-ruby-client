@@ -37,7 +37,7 @@ RSpec.describe Truemail::Client::Http do
       end
 
       context 'when secure connection' do
-        let(:configuration_settings) { { secure_connection: true  } }
+        let(:configuration_settings) { { secure_connection: true } }
 
         include_examples 'sends valid request to truemail api'
       end
