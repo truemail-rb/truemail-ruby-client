@@ -1,9 +1,8 @@
 # <img src='https://repository-images.githubusercontent.com/246571655/128eda80-63af-11ea-8a0e-d1a7b9043c29' height='250' alt='Truemail web API client library for Ruby' />
 
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/ccc7167f4f49d4a10146/maintainability)](https://codeclimate.com/github/truemail-rb/truemail-ruby-client/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/ccc7167f4f49d4a10146/test_coverage)](https://codeclimate.com/github/truemail-rb/truemail-ruby-client/test_coverage) [![CircleCI](https://circleci.com/gh/truemail-rb/truemail-ruby-client/tree/develop.svg?style=svg)](https://circleci.com/gh/truemail-rb/truemail-ruby-client/tree/develop) [![Gem Version](https://badge.fury.io/rb/truemail-client.svg)](https://badge.fury.io/rb/truemail-client) [![Downloads](https://img.shields.io/gem/dt/truemail-client.svg?colorA=004d99&colorB=0073e6)](https://rubygems.org/gems/truemail-client) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
-`truemail-client` gem - Truemail web API client library for Ruby.
+`truemail-client` gem - [Truemail web API](https://github.com/truemail-rb/truemail-rack) client library for Ruby.
 
 ## Table of Contents
 
@@ -39,7 +38,6 @@ Or install it yourself as:
 
 To have an access for `Truemail::Client` you must configure it first as in the example below:
 
-
 ### Setting global configuration
 
 ```ruby
@@ -66,26 +64,24 @@ After successful configuration, you can establish connection with Truemail serve
 
 ```ruby
 Truemail::Client.validate('admin@bestweb.com.ua')
-
-=>
-
-{
-  "date": "2020-02-26 17:00:56 +0200",
-  "email": "admin@bestweb.com.ua",
-  "validation_type": "smtp",
-  "success": true,
-  "errors": null,
-  "smtp_debug": null,
-  "configuration": {
-    "validation_type_by_domain": null,
-    "whitelist_validation": false,
-    "whitelisted_domains": null,
-    "blacklisted_domains": null,
-    "smtp_safe_check": false,
-    "email_pattern": "default gem value",
-    "smtp_error_body_pattern": "default gem value"
-  }
-}
+=>  {
+      "date": "2020-02-26 17:00:56 +0200",
+      "email": "admin@bestweb.com.ua",
+      "validation_type": "smtp",
+      "success": true,
+      "errors": null,
+      "smtp_debug": null,
+      "configuration": {
+        "validation_type_by_domain": null,
+        "whitelist_validation": false,
+        "whitelisted_domains": null,
+        "blacklisted_domains": null,
+        "smtp_safe_check": false,
+        "email_pattern": "default gem value",
+        "smtp_error_body_pattern": "default gem value",
+        "not_rfc_mx_lookup_flow": false
+      }
+    }
 ```
 
 `Truemail::Client.validate` always returns JSON data. If something goes wrong you will receive JSON with error details:
@@ -104,7 +100,6 @@ After successful configuration, you can read current `Truemail::Client` configur
 
 ```ruby
 Truemail::Client.configuration
-
 => #<Truemail::Client::Configuration:0x000055eafc588878
   @host="example.com",
   @port=80,
@@ -119,7 +114,6 @@ Truemail::Client.configuration.port = 8080
 => 8080
 
 Truemail::Client.configuration
-
 => #<Truemail::Client::Configuration:0x000055eafc588878
   @host="example.com",
   @port=8080,
@@ -144,21 +138,13 @@ Truemail::Client.configuration
 
 All Truemail extensions: https://github.com/truemail-rb
 
-### truemail
-
-gem `truemail` - Configurable plain Ruby email validator, https://github.com/rubygarage/truemail
-
-### truemail server
-
-Lightweight rack based web API wrapper for Truemail, https://github.com/truemail-rb/truemail-rack
-
-### truemail-rack-docker-image
-
-Lightweight rack based web API [dockerized image](https://hub.docker.com/r/truemail/truemail-rack) :whale: of Truemail server, https://github.com/truemail-rb/truemail-rack-docker-image
-
-### truemail-rspec
-
-gem `truemail-rspec` - Truemail configuration and validator RSpec helpers, https://github.com/truemail-rb/truemail-rspec
+| Name | Type | Description |
+| --- | --- | --- |
+| [truemail](https://github.com/rubygarage/truemail) | ruby gem | Configurable framework agnostic plain Ruby email validator, main core |
+| [truemail server](https://github.com/truemail-rb/truemail-rack) | ruby app | Lightweight rack based web API wrapper for Truemail |
+| [truemail-rack-docker](https://github.com/truemail-rb/truemail-rack-docker-image) | docker image | Lightweight rack based web API [dockerized image](https://hub.docker.com/r/truemail/truemail-rack) :whale: of Truemail server |
+| [truemail-crystal-client](https://github.com/truemail-rb/truemail-crystal-client) | crystal shard | Truemail web API client library for Crystal |
+| [truemail-rspec](https://github.com/truemail-rb/truemail-rspec) | ruby gem | Truemail configuration and validator RSpec helpers |
 
 ## Contributing
 
