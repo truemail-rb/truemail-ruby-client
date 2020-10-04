@@ -4,7 +4,7 @@
 
 - [ ] I have updated truemail-ruby-client to the latest version
 - [ ] I have read the [Contribution Guidelines](https://github.com/truemail-rb/truemail-ruby-client/blob/master/CONTRIBUTING.md)
-- [ ] I have read the [documentation](https://github.com/truemail-rb/truemail-ruby-client/blob/master/README.md)
+- [ ] I have read the [documentation](https://truemail-rb.org/truemail-ruby-client)
 - [ ] I have searched for [existing GitHub issues](https://github.com/truemail-rb/truemail-ruby-client/issues)
 
 ### Issue Description

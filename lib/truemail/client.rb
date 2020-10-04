@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'truemail/client/version'
-require 'truemail/client/configuration'
-require 'truemail/client/http'
+require_relative '../truemail/client/version'
+require_relative '../truemail/client/configuration'
+require_relative '../truemail/client/http'
 
 module Truemail
   module Client
@@ -29,7 +29,12 @@ module Truemail
 
       def validate(email)
         raise_unless(Truemail::Client.configuration, Truemail::Client::NOT_CONFIGURED)
-        Truemail::Client::Http.new(email).run
+        Truemail::Client::Http.new(email: email).run
+      end
+
+      def server_healthy?
+        raise_unless(Truemail::Client.configuration, Truemail::Client::NOT_CONFIGURED)
+        Truemail::Client::Http.new(Truemail::Client::Http::HEALTHCHECK_ENDPOINT).run.empty?
       end
 
       private

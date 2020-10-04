@@ -38,7 +38,8 @@ module RequestHelper
           smtp_safe_check: true,
           validation_type_by_domain: nil,
           whitelist_validation: false,
-          whitelisted_domains: nil
+          whitelisted_domains: nil,
+          not_rfc_mx_lookup_flow: false
         },
         date: Time.now,
         email: email,
