@@ -103,6 +103,13 @@ RSpec.describe Truemail::Client do
     end
   end
 
+  shared_examples 'global configuration was not set' do
+    specify do
+      expect { subject }
+        .to raise_error(Truemail::Client::Configuration::Error, Truemail::Client::NOT_CONFIGURED)
+    end
+  end
+
   describe '.validate' do
     subject(:validate) { described_class.validate(email) }
 
@@ -113,17 +120,53 @@ RSpec.describe Truemail::Client do
       before { configure_client }
 
       it 'creates http instance, sends request' do
-        expect(Truemail::Client::Http).to receive(:new).with(email).and_return(http_instance)
+        expect(Truemail::Client::Http).to receive(:new).with(email: email).and_return(http_instance)
         expect(http_instance).to receive(:run)
         validate
       end
     end
 
     context 'when global configuration was not set' do
-      specify do
-        expect { validate }
-          .to raise_error(Truemail::Client::Configuration::Error, Truemail::Client::NOT_CONFIGURED)
+      it_behaves_like 'global configuration was not set'
+    end
+  end
+
+  describe '.server_healthy?' do
+    subject(:server_healthy) { described_class.server_healthy? }
+
+    let(:http_instance) { instance_double('Http') }
+
+    context 'when global configuration was set' do
+      before do
+        configure_client
+        allow(Truemail::Client::Http)
+          .to receive(:new).with(Truemail::Client::Http::HEALTHCHECK_ENDPOINT).and_return(http_instance)
+        allow(http_instance).to receive(:run).and_return(healthcheck_result)
       end
+
+      shared_examples 'returns server health status' do
+        it 'returns server health status' do
+          expect(server_healthy).to be(expectation)
+        end
+      end
+
+      context 'when server is healthy' do
+        let(:healthcheck_result) { '' }
+        let(:expectation) { true }
+
+        include_examples 'returns server health status'
+      end
+
+      context 'when server is not healthy' do
+        let(:healthcheck_result) { 'some_response_context' }
+        let(:expectation) { false }
+
+        include_examples 'returns server health status'
+      end
+    end
+
+    context 'when global configuration was not set' do
+      it_behaves_like 'global configuration was not set'
     end
   end
 end
