@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Truemail::Client::Http do
-  subject(:http_instance) { described_class.new(email) }
+  subject(:http_instance) { described_class.new(email: email) }
 
   let(:email) { FFaker::Internet.email }
 
@@ -9,6 +9,8 @@ RSpec.describe Truemail::Client::Http do
     specify { expect(described_class).to be_const_defined(:URI_ATTRS) }
     specify { expect(described_class).to be_const_defined(:USER_AGENT) }
     specify { expect(described_class).to be_const_defined(:MIME_TYPE) }
+    specify { expect(described_class).to be_const_defined(:VALIDATION_ENDPOINT) }
+    specify { expect(described_class).to be_const_defined(:HEALTHCHECK_ENDPOINT) }
   end
 
   describe '#run' do

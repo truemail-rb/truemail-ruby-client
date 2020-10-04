@@ -16,6 +16,14 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/truemail-rb/truemail-ruby-client'
   spec.license       = 'MIT'
 
+  spec.metadata = {
+    'homepage_uri' => 'https://truemail-rb.org',
+    'changelog_uri' => 'https://github.com/truemail-rb/truemail-ruby-client/blob/master/CHANGELOG.md',
+    'source_code_uri' => 'https://github.com/truemail-rb/truemail-ruby-client',
+    'documentation_uri' => 'https://truemail-rb.org/truemail-ruby-client',
+    'bug_tracker_uri' => 'https://github.com/truemail-rb/truemail-ruby-client/issues'
+  }
+
   spec.required_ruby_version = '>= 2.5.0'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

@@ -1,8 +1,11 @@
-# <img src='https://repository-images.githubusercontent.com/246571655/128eda80-63af-11ea-8a0e-d1a7b9043c29' height='250' alt='Truemail web API client library for Ruby' />
+# ![Truemail web API client library for Ruby](https://repository-images.githubusercontent.com/246571655/128eda80-63af-11ea-8a0e-d1a7b9043c29)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/ccc7167f4f49d4a10146/maintainability)](https://codeclimate.com/github/truemail-rb/truemail-ruby-client/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/ccc7167f4f49d4a10146/test_coverage)](https://codeclimate.com/github/truemail-rb/truemail-ruby-client/test_coverage) [![CircleCI](https://circleci.com/gh/truemail-rb/truemail-ruby-client/tree/develop.svg?style=svg)](https://circleci.com/gh/truemail-rb/truemail-ruby-client/tree/develop) [![Gem Version](https://badge.fury.io/rb/truemail-client.svg)](https://badge.fury.io/rb/truemail-client) [![Downloads](https://img.shields.io/gem/dt/truemail-client.svg?colorA=004d99&colorB=0073e6)](https://rubygems.org/gems/truemail-client) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
 
 `truemail-client` gem - [Truemail web API](https://github.com/truemail-rb/truemail-rack) client library for Ruby.
+
+
+> Actual and maintainable documentation :books: for developers is living [here](https://truemail-rb.org/truemail-ruby-client).
 
 ## Table of Contents
 
@@ -10,6 +13,7 @@
 - [Usage](#usage)
   - [Setting global configuration](#setting-global-configuration)
   - [Establishing connection with Truemail API](#establishing-connection-with-truemail-api)
+  - [Checking server health status](#checking-server-health-status)
   - [Additional features](#additional-features)
 - [Truemail family](#truemail-family)
 - [Contributing](#contributing)
@@ -92,6 +96,16 @@ Truemail::Client.validate('admin@bestweb.com.ua')
 }
 ```
 
+### Checking server health status
+
+After successful configuration, you can check health-status of Truemail server.
+
+```ruby
+Truemail::Client.server_healthy?
+
+=> true
+```
+
 ### Additional features
 
 #### Read global configuration
@@ -136,7 +150,7 @@ Truemail::Client.configuration
 
 ## Truemail family
 
-All Truemail extensions: https://github.com/truemail-rb
+All Truemail extensions: https://truemail-rb.org
 
 | Name | Type | Description |
 | --- | --- | --- |
