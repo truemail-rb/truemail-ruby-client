@@ -22,6 +22,10 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/truemail/client/http.rb'
+
 Naming/VariableNumber:
   Enabled: false
 
@@ -90,6 +94,10 @@ Style/RedundantRegexpEscape:
 
 Style/SlicingWithRange:
   Enabled: true
+
+Style/IfUnlessModifier:
+  Exclude:
+    - 'lib/truemail/client/http.rb'
 
 Layout/LineLength:
   Max: 140
