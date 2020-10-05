@@ -7,7 +7,8 @@ RSpec.describe RequestHelper, type: :helper do
     let(:port) { rand(80..8080) }
     let(:token) { create_token }
     let(:method) { :get }
-    let(:email) { FFaker::Internet.email }
+    let(:endpoint) { '/some_endpoint' }
+    let(:request_params) { { email: FFaker::Internet.email } }
     let(:accept) { 'accept_header' }
     let(:content_type) { 'content_type_header' }
     let(:user_agent) { 'user_agent_header' }
@@ -22,20 +23,26 @@ RSpec.describe RequestHelper, type: :helper do
     let(:request_settings) do
       {
         method: method,
-        email: email,
         accept: accept,
         content_type: content_type,
-        user_agent: user_agent
+        user_agent: user_agent,
+        endpoint: endpoint,
+        type: endpoint_type,
+        params: request_params
       }
     end
 
-    def request(secure_connection:, host:, port:, token:, email:, accept:, content_type:, user_agent:, **) # rubocop:disable Metrics/ParameterLists
+    def request(secure_connection:, host:, port:, token:, accept:, content_type:, user_agent:, endpoint:, type:, params:, **) # rubocop:disable Metrics/ParameterLists
       Net::HTTP.start(host, port, use_ssl: secure_connection) do |http|
-        request = Net::HTTP::Get.new(URI("#{secure_connection ? 'https' : 'http'}://#{host}:#{port}/?email=#{email}"))
+        path = URI::HTTP.build(
+          path: endpoint,
+          query: params.empty? ? nil : URI.encode_www_form(params)
+        ).request_uri.gsub(/%40/, '@')
+        request = Net::HTTP::Get.new(URI("#{secure_connection ? 'https' : 'http'}://#{host}:#{port}#{path}"))
         request['User-Agent'] = user_agent
         request['Accept'] = accept
         request['Content-Type'] = content_type
-        request['Authorization'] = token
+        request['Authorization'] = token if type.eql?(:private)
         http.request(request)
       end
     end
@@ -50,20 +57,37 @@ RSpec.describe RequestHelper, type: :helper do
 
       context 'when all settings passed' do
         let(:request_configuration_settings) { configuration_settings }
+        let(:endpoint_type) { :private }
 
         include_examples 'checks request settings, stubs current request'
       end
 
       context 'when configuration settings not passed' do
         let(:request_configuration_settings) { {} }
+        let(:endpoint_type) { :public }
 
         before { configure_client(configuration_settings) }
 
         include_examples 'checks request settings, stubs current request'
       end
+
+      context 'when email not passed in params' do
+        let(:request_configuration_settings) { configuration_settings }
+        let(:request_params) { {} }
+        let(:endpoint_type) { :public }
+
+        it 'checks request settings, stubs current request' do
+          have_sent_request_with(**request_configuration_settings, **request_settings)
+          response = request(**configuration_settings, **request_settings)
+          expect(response.code).to eq('200')
+          expect(response.body).to be_empty
+        end
+      end
     end
 
     context 'when request is not equal to mock' do
+      let(:endpoint_type) { :public }
+
       specify do
         expect { request(**configuration_settings, **request_settings) }
           .to raise_error(WebMock::NetConnectNotAllowedError)
