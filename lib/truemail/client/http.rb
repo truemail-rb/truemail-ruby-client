@@ -27,7 +27,9 @@ module Truemail
           request['User-Agent'] = Truemail::Client::Http::USER_AGENT
           request['Accept'] = Truemail::Client::Http::MIME_TYPE
           request['Content-Type'] = Truemail::Client::Http::MIME_TYPE
-          request['Authorization'] = Truemail::Client.configuration.token
+          unless endpoint.eql?(Truemail::Client::Http::HEALTHCHECK_ENDPOINT)
+            request['Authorization'] = Truemail::Client.configuration.token
+          end
           http.request(request)
         end.body
       rescue => error
