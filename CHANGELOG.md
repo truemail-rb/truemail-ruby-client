@@ -2,6 +2,16 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2020-10-28
+
+### Changed
+
+Truemail client sends encoded uri params, follows [RFC 3986, sec 2.1](https://tools.ietf.org/html/rfc3986#section-2.1).
+
+- Updated `Truemail::Client::Http#request_uri`
+- Updated gem dependencies
+- Updated gem version, changelog, docs
+
 ## [0.2.1] - 2020-10-05
 
 ### Fixed
