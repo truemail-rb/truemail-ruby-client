@@ -198,3 +198,6 @@ RSpec/MessageSpies:
 
 RSpec/MultipleDescribes:
   Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

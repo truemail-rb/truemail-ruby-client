@@ -38,7 +38,7 @@ RSpec.describe ConfigurationHelper, type: :helper do
     end
 
     context 'with custom params' do
-      let(:host) { FFaker::Internet.domain_name }
+      let(:host) { Faker::Internet.domain_name }
       let(:token) { create_token }
       let(:params) { { host: host, token: token } }
 

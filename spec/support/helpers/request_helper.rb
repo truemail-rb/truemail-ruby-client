@@ -13,7 +13,7 @@ module RequestHelper
     path = URI::HTTP.build(
       path: request.endpoint,
       query: request_params.empty? ? nil : URI.encode_www_form(request_params)
-    ).request_uri.gsub(/%40/, '@') # TODO: should be removed after new Truemail server release with encoding uri param values
+    ).request_uri
 
     url = "#{request.secure_connection ? 'https' : 'http'}://#{request.host}:#{request.port}#{path}"
 
