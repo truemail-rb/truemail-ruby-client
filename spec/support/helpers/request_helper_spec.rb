@@ -3,12 +3,12 @@
 RSpec.describe RequestHelper, type: :helper do
   describe '#have_sent_request_with' do
     let(:secure_connection) { true }
-    let(:host) { FFaker::Internet.domain_name }
+    let(:host) { Faker::Internet.domain_name }
     let(:port) { rand(80..8080) }
     let(:token) { create_token }
     let(:method) { :get }
     let(:endpoint) { '/some_endpoint' }
-    let(:request_params) { { email: FFaker::Internet.email } }
+    let(:request_params) { { email: Faker::Internet.email } }
     let(:accept) { 'accept_header' }
     let(:content_type) { 'content_type_header' }
     let(:user_agent) { 'user_agent_header' }

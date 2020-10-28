@@ -44,7 +44,7 @@ module Truemail
         URI::HTTP.build(
           path: endpoint,
           query: uri_params.empty? ? nil : URI.encode_www_form(uri_params)
-        ).request_uri.gsub(/%40/, '@') # TODO: should be removed after new Truemail server release with encoding uri param values
+        ).request_uri
       end
 
       def uri
