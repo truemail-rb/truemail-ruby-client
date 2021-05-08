@@ -18,7 +18,7 @@ module Truemail
       def initialize(&block)
         @secure_connection = false
         @port = Truemail::Client::Configuration::DEFAULT_PORT
-        tap(&block) if block_given?
+        tap(&block) if block
       end
 
       %i[host port token].each do |method|
