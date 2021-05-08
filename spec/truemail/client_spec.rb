@@ -15,7 +15,7 @@ RSpec.describe Truemail::Client do
       subject(:configure) { described_class.configure(&config_block) }
 
       context 'without block' do
-        let(:config_block) {}
+        let(:config_block) { nil }
 
         specify { expect { configure }.not_to change(described_class, :configuration) }
         specify { expect(configure).to be_nil }
