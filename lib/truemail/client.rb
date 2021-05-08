@@ -12,7 +12,7 @@ module Truemail
     class << self
       def configuration(&block)
         @configuration ||= begin
-          return unless block_given?
+          return unless block
           configuration = Truemail::Client::Configuration.new(&block)
           raise_unless(configuration.complete?, Truemail::Client::INCOMPLETE_CONFIG)
           configuration
