@@ -22,8 +22,8 @@ module Truemail
       end
 
       def run
-        Net::HTTP.start(uri.host, uri.port, use_ssl: secure_connection) do |http|
-          request = Net::HTTP::Get.new(uri)
+        ::Net::HTTP.start(uri.host, uri.port, use_ssl: secure_connection) do |http|
+          request = ::Net::HTTP::Get.new(uri)
           request['User-Agent'] = Truemail::Client::Http::USER_AGENT
           request['Accept'] = Truemail::Client::Http::MIME_TYPE
           request['Content-Type'] = Truemail::Client::Http::MIME_TYPE
@@ -41,9 +41,9 @@ module Truemail
       attr_reader(*Truemail::Client::Http::URI_ATTRS)
 
       def request_uri
-        URI::HTTP.build(
+        ::URI::HTTP.build(
           path: endpoint,
-          query: uri_params.empty? ? nil : URI.encode_www_form(uri_params)
+          query: uri_params.empty? ? nil : ::URI.encode_www_form(uri_params)
         ).request_uri
       end
 

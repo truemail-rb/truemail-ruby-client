@@ -10,17 +10,17 @@ RSpec.describe Truemail::Client::Http do
   end
 
   describe '#run' do
-    subject(:run) { described_class.new(endpoint, request_params).run }
+    subject(:run) { described_class.new(endpoint, **request_params).run }
 
     let(:configuration_settings) { {} }
     let(:endpoint_type) { :private }
 
-    before { configure_client(configuration_settings) }
+    before { configure_client(**configuration_settings) }
 
     context 'when connection successful' do
       shared_examples 'sends valid request to truemail api' do
         it 'sends valid request to truemail api' do
-          have_sent_request_with(request_settings)
+          have_sent_request_with(**request_settings)
           expect(run).to match_json_schema('connection_successful')
         end
       end
@@ -68,7 +68,7 @@ RSpec.describe Truemail::Client::Http do
         end
 
         it 'sends valid request to truemail api' do
-          have_sent_request_with(request_settings)
+          have_sent_request_with(**request_settings)
           expect(run).to be_empty
         end
       end
@@ -80,7 +80,7 @@ RSpec.describe Truemail::Client::Http do
       let(:error) { 'error context' }
 
       it 'returns json with client error' do
-        allow(Net::HTTP).to receive(:start).and_raise(SocketError, error)
+        allow(::Net::HTTP).to receive(:start).and_raise(::SocketError, error)
         expect(run).to match_json_schema('connection_error')
       end
     end
