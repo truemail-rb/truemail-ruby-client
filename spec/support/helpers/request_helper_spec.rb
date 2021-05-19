@@ -33,12 +33,12 @@ RSpec.describe RequestHelper, type: :helper do
     end
 
     def request(secure_connection:, host:, port:, token:, accept:, content_type:, user_agent:, endpoint:, type:, params:, **) # rubocop:disable Metrics/ParameterLists
-      Net::HTTP.start(host, port, use_ssl: secure_connection) do |http|
-        path = URI::HTTP.build(
+      ::Net::HTTP.start(host, port, use_ssl: secure_connection) do |http|
+        path = ::URI::HTTP.build(
           path: endpoint,
-          query: params.empty? ? nil : URI.encode_www_form(params)
+          query: params.empty? ? nil : ::URI.encode_www_form(params)
         ).request_uri.gsub(/%40/, '@')
-        request = Net::HTTP::Get.new(URI("#{secure_connection ? 'https' : 'http'}://#{host}:#{port}#{path}"))
+        request = ::Net::HTTP::Get.new(URI("#{secure_connection ? 'https' : 'http'}://#{host}:#{port}#{path}"))
         request['User-Agent'] = user_agent
         request['Accept'] = accept
         request['Content-Type'] = content_type
@@ -66,7 +66,7 @@ RSpec.describe RequestHelper, type: :helper do
         let(:request_configuration_settings) { {} }
         let(:endpoint_type) { :public }
 
-        before { configure_client(configuration_settings) }
+        before { configure_client(**configuration_settings) }
 
         include_examples 'checks request settings, stubs current request'
       end

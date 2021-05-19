@@ -5,8 +5,8 @@ module Truemail
     class Configuration
       DEFAULT_PORT = 9292
 
-      Error = Class.new(StandardError)
-      ArgumentError = Class.new(StandardError) do
+      Error = ::Class.new(::StandardError)
+      ArgumentError = ::Class.new(::StandardError) do
         def initialize(arg_value, arg_name)
           super("#{arg_value} is not a valid #{arg_name[0..-2]}")
         end
@@ -26,7 +26,7 @@ module Truemail
           raise_unless(
             argument,
             __method__,
-            method.eql?(:port) ? argument.is_a?(Integer) && argument.positive? : argument.is_a?(String)
+            method.eql?(:port) ? argument.is_a?(::Integer) && argument.positive? : argument.is_a?(::String)
           )
           instance_variable_set(:"@#{method}", argument)
         end
