@@ -2,6 +2,18 @@
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.2] - 2021-05-19
+
+### Fixed
+
+- Gem syntax compatibility with Ruby 3.x
+
+### Changed
+
+- Updated gem dependencies
+- Updated rubocop/codeclimate config
+- Updated gem version
+
 ## [0.3.1] - 2021-05-08
 
 ### Changed

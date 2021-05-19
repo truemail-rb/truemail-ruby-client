@@ -9,6 +9,8 @@
       {
           "configuration": {
               "blacklisted_domains": null,
+              "blacklisted_mx_ip_addresses": null,
+              "dns": null,
               "email_pattern": "default gem value",
               "smtp_error_body_pattern": "default gem value",
               "smtp_safe_check": true,
@@ -44,6 +46,8 @@
           "examples": [
               {
                   "blacklisted_domains": null,
+                  "blacklisted_mx_ip_addresses": null,
+                  "dns": null,
                   "email_pattern": "default gem value",
                   "smtp_error_body_pattern": "default gem value",
                   "smtp_safe_check": true,
@@ -55,6 +59,8 @@
           ],
           "required": [
               "blacklisted_domains",
+              "blacklisted_mx_ip_addresses",
+              "dns",
               "email_pattern",
               "smtp_error_body_pattern",
               "smtp_safe_check",
@@ -74,6 +80,26 @@
                       null
                   ]
               },
+              "blacklisted_mx_ip_addresses": {
+                "$id": "#/properties/configuration/properties/blacklisted_mx_ip_addresses",
+                "type": "null",
+                "title": "The blacklisted_mx_ip_addresses schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": null,
+                "examples": [
+                    null
+                ]
+            },
+            "dns": {
+              "$id": "#/properties/configuration/properties/dns",
+              "type": "null",
+              "title": "The dns schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": null,
+              "examples": [
+                  null
+              ]
+          },
               "email_pattern": {
                   "$id": "#/properties/configuration/properties/email_pattern",
                   "type": "string",

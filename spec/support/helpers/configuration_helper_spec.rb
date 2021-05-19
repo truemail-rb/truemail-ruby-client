@@ -3,11 +3,11 @@
 RSpec.describe ConfigurationHelper, type: :helper do
   describe '#configuration_block' do
     let(:configuration_params) { { param_1: 1, param_2: 2 } }
-    let(:configuration_instance) { Struct.new(*configuration_params.keys).new }
+    let(:configuration_instance) { ::Struct.new(*configuration_params.keys).new }
 
-    before { configuration_block(configuration_params).call(configuration_instance) }
+    before { configuration_block(**configuration_params).call(configuration_instance) }
 
-    specify { expect(configuration_block).to be_an_instance_of(Proc) }
+    specify { expect(configuration_block).to be_an_instance_of(::Proc) }
 
     it 'sets configuration instance attributes' do
       configuration_params.each do |attribute, value|
@@ -19,12 +19,12 @@ RSpec.describe ConfigurationHelper, type: :helper do
   describe '#create_token' do
     it 'returns secure token' do
       expect(SecureRandom).to receive(:uuid).and_call_original
-      expect(create_token).to be_an_instance_of(String)
+      expect(create_token).to be_an_instance_of(::String)
     end
   end
 
   describe '#configure_client' do
-    subject(:configuration_builder) { configure_client(params) }
+    subject(:configuration_builder) { configure_client(**params) }
 
     let(:params) { {} }
 
