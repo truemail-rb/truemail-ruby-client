@@ -2,7 +2,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/ccc7167f4f49d4a10146/maintainability)](https://codeclimate.com/github/truemail-rb/truemail-ruby-client/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ccc7167f4f49d4a10146/test_coverage)](https://codeclimate.com/github/truemail-rb/truemail-ruby-client/test_coverage)
-[![CircleCI](https://circleci.com/gh/truemail-rb/truemail-ruby-client/tree/develop.svg?style=svg)](https://circleci.com/gh/truemail-rb/truemail-ruby-client/tree/develop)
+[![CircleCI](https://circleci.com/gh/truemail-rb/truemail-ruby-client/tree/master.svg?style=svg)](https://circleci.com/gh/truemail-rb/truemail-ruby-client/tree/master)
 [![Gem Version](https://badge.fury.io/rb/truemail-client.svg)](https://badge.fury.io/rb/truemail-client)
 [![Downloads](https://img.shields.io/gem/dt/truemail-client.svg?colorA=004d99&colorB=0073e6)](https://rubygems.org/gems/truemail-client)
 [![Gitter](https://badges.gitter.im/truemail-rb/community.svg)](https://gitter.im/truemail-rb/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
