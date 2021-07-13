@@ -32,6 +32,9 @@ Naming/VariableNumber:
 Naming/RescuedExceptionsVariableName:
   Enabled: false
 
+Naming/InclusiveLanguage:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
@@ -135,6 +138,15 @@ Style/IfUnlessModifier:
   Exclude:
     - 'lib/truemail/client/http.rb'
 
+Style/InPatternThen:
+  Enabled: true
+
+Style/MultilineInPatternThen:
+  Enabled: true
+
+Style/QuotedSymbols:
+  Enabled: true
+
 Layout/LineLength:
   Max: 140
 
@@ -170,6 +182,9 @@ Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
 Layout/SpaceBeforeBrackets:
+  Enabled: true
+
+Layout/LineEndStringConcatenationIndentation:
   Enabled: true
 
 Lint/NonDeterministicRequireOrder:
@@ -236,6 +251,9 @@ Lint/UnexpectedBlockArity:
   Enabled: true
 
 Lint/UnmodifiedReduceAccumulator:
+  Enabled: true
+
+Lint/EmptyInPattern:
   Enabled: true
 
 Performance/AncestorsInclude:
@@ -318,3 +336,9 @@ RSpec/MultipleMemoizedHelpers:
 
 RSpec/StubbedMock:
   Enabled: false
+
+RSpec/IdenticalEqualityAssertion:
+  Enabled: true
+
+RSpec/Rails/AvoidSetupHook:
+  Enabled: true
