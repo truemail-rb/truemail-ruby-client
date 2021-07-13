@@ -1,22 +1,22 @@
 PATH
   remote: .
   specs:
-    truemail-client (0.3.2)
+    truemail-client (0.3.3)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
     bundler-audit (0.8.0)
       bundler (>= 1.2.0, < 3)
       thor (~> 1.0)
     byebug (11.1.3)
-    childprocess (4.0.0)
+    childprocess (4.1.0)
     coderay (1.1.3)
     colorize (0.8.1)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     crack (0.4.5)
       rexml
     diff-lcs (1.4.4)
@@ -36,11 +36,12 @@ GEM
     json_schema (0.21.0)
     kwalify (0.7.2)
     method_source (1.0.0)
-    overcommit (0.57.0)
+    overcommit (0.58.0)
       childprocess (>= 0.6.3, < 5)
       iniparse (~> 1.4)
+      rexml (~> 3.2)
     parallel (1.20.1)
-    parser (3.0.1.1)
+    parser (3.0.2.0)
       ast (~> 2.4.1)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -51,7 +52,7 @@ GEM
     psych (3.3.2)
     public_suffix (4.0.6)
     rainbow (3.0.0)
-    rake (13.0.3)
+    rake (13.0.6)
     reek (6.0.4)
       kwalify (~> 0.7.0)
       parser (~> 3.0.0)
@@ -72,21 +73,21 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.2)
-    rubocop (1.15.0)
+    rubocop (1.18.3)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.5.0, < 2.0)
+      rubocop-ast (>= 1.7.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.5.0)
+    rubocop-ast (1.7.0)
       parser (>= 3.0.1.1)
-    rubocop-performance (1.11.3)
+    rubocop-performance (1.11.4)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rspec (2.3.0)
+    rubocop-rspec (2.4.0)
       rubocop (~> 1.0)
       rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.11.0)
@@ -106,25 +107,25 @@ GEM
       hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
-  x86_64-darwin-19
+  x86_64-darwin-20
 
 DEPENDENCIES
-  bundler (~> 2.2, >= 2.2.17)
+  bundler (~> 2.2, >= 2.2.23)
   bundler-audit (~> 0.8.0)
-  faker (~> 2.17)
+  faker (~> 2.18)
   fasterer (~> 0.9.0)
   json_matchers (~> 0.11.1)
-  overcommit (~> 0.57.0)
+  overcommit (~> 0.58.0)
   pry-byebug (~> 3.9)
-  rake (~> 13.0, >= 13.0.3)
+  rake (~> 13.0, >= 13.0.6)
   reek (~> 6.0, >= 6.0.4)
   rspec (~> 3.10)
-  rubocop (~> 1.14)
-  rubocop-performance (~> 1.11, >= 1.11.3)
-  rubocop-rspec (~> 2.3)
+  rubocop (~> 1.18, >= 1.18.3)
+  rubocop-performance (~> 1.11, >= 1.11.4)
+  rubocop-rspec (~> 2.4)
   simplecov (~> 0.17.1)
   truemail-client!
-  webmock (~> 3.12, >= 3.12.2)
+  webmock (~> 3.13)
 
 BUNDLED WITH
-   2.2.17
+   2.2.23
