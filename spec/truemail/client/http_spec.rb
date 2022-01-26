@@ -27,7 +27,7 @@ RSpec.describe Truemail::Client::Http do
 
       context 'when validation endpoint' do
         let(:endpoint) { Truemail::Client::Http::VALIDATION_ENDPOINT }
-        let(:request_params) { { email: Faker::Internet.email } }
+        let(:request_params) { { email: FFaker::Internet.email } }
         let(:request_settings) do
           {
             method: :get,
