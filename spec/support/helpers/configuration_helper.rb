@@ -17,7 +17,7 @@ module ConfigurationHelper
 
   def configure_client(**configuration_settings)
     Truemail::Client.reset_configuration!
-    configuration_settings[:host] = Faker::Internet.domain_name unless configuration_settings[:host]
+    configuration_settings[:host] = FFaker::Internet.domain_name unless configuration_settings[:host]
     configuration_settings[:token] = create_token unless configuration_settings[:token]
     Truemail::Client.configure(&configuration_block(**configuration_settings))
   end
