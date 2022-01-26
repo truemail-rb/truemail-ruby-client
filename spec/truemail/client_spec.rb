@@ -7,7 +7,7 @@ RSpec.describe Truemail::Client do
   end
 
   describe 'global configuration methods' do
-    let(:host) { Faker::Internet.domain_name }
+    let(:host) { FFaker::Internet.domain_name }
     let(:token) { create_token }
     let(:config_block) { configuration_block(host: host, token: token) }
 
@@ -70,7 +70,7 @@ RSpec.describe Truemail::Client do
         specify { expect(configuration).to be_instance_of(Truemail::Client::Configuration) }
 
         it 'accepts to rewrite current configuration settings' do
-          secure_connection, new_host, port, new_token = true, Faker::Internet.domain_name, 8080, create_token
+          secure_connection, new_host, port, new_token = true, FFaker::Internet.domain_name, 8080, create_token
 
           expect do
             configuration.tap(&configuration_block(
@@ -113,7 +113,7 @@ RSpec.describe Truemail::Client do
   describe '.validate' do
     subject(:validate) { described_class.validate(email) }
 
-    let(:email) { Faker::Internet.email }
+    let(:email) { FFaker::Internet.email }
     let(:http_instance) { instance_double('Http') }
 
     context 'when global configuration was set' do

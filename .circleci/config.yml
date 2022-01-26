@@ -120,12 +120,12 @@ workflows:
       - linters-ruby:
           matrix:
             parameters:
-              ruby-version: ["3.0"]
+              ruby-version: ["3.1"]
       - tests-ruby:
           matrix:
             parameters:
-              ruby-version: ["3.0"]
+              ruby-version: ["3.1"]
       - compatibility-ruby:
           matrix:
             parameters:
-              ruby-version: ["2.5", "2.6", "2.7"]
+              ruby-version: ["2.5", "2.6", "2.7", "3.0"]

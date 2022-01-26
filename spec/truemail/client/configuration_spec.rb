@@ -3,7 +3,7 @@
 RSpec.describe Truemail::Client::Configuration do
   subject(:configuration_instance) { described_class.new }
 
-  let(:host) { Faker::Internet.domain_name }
+  let(:host) { FFaker::Internet.domain_name }
   let(:token) { create_token }
 
   describe 'defined constants' do
