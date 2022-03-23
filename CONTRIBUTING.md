@@ -38,9 +38,10 @@ Please adhere to the coding conventions used throughout a project (indentation, 
 
 Guidelines for pull requests:
 
-1. Truemail [pull request template](.github/PULL_REQUEST_TEMPLATE.md)
-2. Fork the repo, checkout to `develop` branch
+1. Fork the repo, checkout to `develop` branch
+2. Read our [setup development environment guide](.github/DEVELOPMENT_ENVIRONMENT_GUIDE.md)
 3. Run the tests. This is to make sure your starting point works
-4. Read our [branch naming convention](.github/BRANCH_NAMING_CONVENTION.md)
-5. Create a new branch and make your changes. This includes tests for features!
-6. Push to your fork and submit a pull request to `develop` branch
+4. Read our [branch naming convention](.github/BRANCH_NAMING_CONVENTION.md), create a new branch
+5. Make your changes. Please note that your PR should include tests for the new codebase!
+6. Push your changes to your fork
+7. Submit a pull request to `develop` branch using our [pull request template](.github/PULL_REQUEST_TEMPLATE.md)

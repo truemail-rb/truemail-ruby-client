@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-lib = ::File.expand_path('lib', __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'truemail/client/version'
+require_relative 'lib/truemail/client/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'truemail-client'
@@ -33,8 +31,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'ffaker', '~> 2.20'
   spec.add_development_dependency 'json_matchers', '~> 0.11.1'
-  spec.add_development_dependency 'pry-byebug', '~> 3.9'
   spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.6'
-  spec.add_development_dependency 'rspec', '~> 3.10'
+  spec.add_development_dependency 'rspec', '~> 3.11'
   spec.add_development_dependency 'webmock', '~> 3.14'
 end
