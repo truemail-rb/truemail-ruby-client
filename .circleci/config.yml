@@ -6,26 +6,15 @@ defaults: &defaults
     - image: cimg/ruby:<< parameters.ruby-version >>
 
 orbs:
-  ruby: circleci/ruby@1.4.0
+  ruby: circleci/ruby@2.0.0
 
 references:
-  restore_bundle_cache: &restore_bundle_cache
-    restore_cache:
-      keys:
-        - truemail-ruby-client-{{ checksum "truemail-client.gemspec" }}
-
   bundle_install: &bundle_install
     run:
       name: Installing gems
       command: |
-            bundle config set --local path 'vendor/bundle'
+            bundle config set --local path '~/vendor/bundle'
             bundle install
-
-  save_bundle_cache: &save_bundle_cache
-    save_cache:
-      key: truemail-ruby-client-{{ checksum "truemail-client.gemspec" }}
-      paths:
-        - vendor/bundle
 
   install_codeclimate_reporter: &install_codeclimate_reporter
     run:
@@ -34,17 +23,20 @@ references:
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
 
+  use_latest_bundler: &use_latest_bundler
+    run:
+      name: Using latest bundler
+      command: gem install bundler
+
   use_latest_gemspec: &use_latest_gemspec
     run:
       name: Using latest gemspec
-      command: |
-            cp .circleci/gemspec_latest truemail-client.gemspec
+      command: cp .circleci/gemspecs/latest truemail-client.gemspec
 
   use_compatible_gemspec: &use_compatible_gemspec
     run:
       name: Using compatible gemspec
-      command: |
-            cp .circleci/gemspec_compatible truemail-client.gemspec
+      command: cp .circleci/gemspecs/compatible truemail-client.gemspec
 
 jobs:
   linters-ruby:
@@ -57,10 +49,9 @@ jobs:
     steps:
       - checkout
 
+      - <<: *use_latest_bundler
       - <<: *use_latest_gemspec
-      - <<: *restore_bundle_cache
       - <<: *bundle_install
-      - <<: *save_bundle_cache
 
       - run:
           name: Running Overcommit
@@ -78,10 +69,9 @@ jobs:
     steps:
       - checkout
 
+      - <<: *use_latest_bundler
       - <<: *use_latest_gemspec
-      - <<: *restore_bundle_cache
       - <<: *bundle_install
-      - <<: *save_bundle_cache
       - <<: *install_codeclimate_reporter
 
       - run:
@@ -113,11 +103,14 @@ jobs:
       - image: cimg/ruby:<< parameters.ruby-version >>
     steps:
       - checkout
+
       - <<: *use_compatible_gemspec
+
       - ruby/install-deps:
-          bundler-version: "2.3.9"
+          bundler-version: "2.3.26"
           with-cache: false
-          path: './vendor/custom_bundle'
+          path: '~/vendor/custom_bundle'
+
       - run:
           name: Running compatibility tests
           command: bundle exec rspec
@@ -128,12 +121,12 @@ workflows:
       - linters-ruby:
           matrix:
             parameters:
-              ruby-version: ["3.1"]
+              ruby-version: ["3.2"]
       - tests-ruby:
           matrix:
             parameters:
-              ruby-version: ["3.1"]
+              ruby-version: ["3.2"]
       - compatibility-ruby:
           matrix:
             parameters:
-              ruby-version: ["2.5", "2.6", "2.7", "3.0"]
+              ruby-version: ["2.5", "2.6", "2.7", "3.0", "3.1"]
