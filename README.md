@@ -43,11 +43,15 @@ gem 'truemail-client'
 
 And then execute:
 
-    $ bundle
+```bash
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install truemail-client
+```bash
+gem install truemail-client
+```
 
 ## Usage
 
@@ -166,7 +170,7 @@ Truemail::Client.configuration
 
 ## Truemail family
 
-All Truemail solutions: https://truemail-rb.org
+All Truemail solutions: <https://truemail-rb.org>
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -180,7 +184,7 @@ All Truemail solutions: https://truemail-rb.org
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/truemail-rb/truemail-ruby-client. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct. Please check the [open tickets](https://github.com/truemail-rb/truemail-ruby-client/issues). Be sure to follow Contributor Code of Conduct below and our [Contributing Guidelines](CONTRIBUTING.md).
+Bug reports and pull requests are welcome on GitHub at <https://github.com/truemail-rb/truemail-ruby-client>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct. Please check the [open tickets](https://github.com/truemail-rb/truemail-ruby-client/issues). Be sure to follow Contributor Code of Conduct below and our [Contributing Guidelines](CONTRIBUTING.md).
 
 ## License
 
