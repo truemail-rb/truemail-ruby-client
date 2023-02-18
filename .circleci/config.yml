@@ -1,3 +1,5 @@
+---
+
 version: 2.1
 
 defaults: &defaults
@@ -6,26 +8,26 @@ defaults: &defaults
     - image: cimg/ruby:<< parameters.ruby-version >>
 
 orbs:
-  ruby: circleci/ruby@1.4.0
+  ruby: circleci/ruby@2.0.0
 
 references:
-  restore_bundle_cache: &restore_bundle_cache
-    restore_cache:
-      keys:
-        - truemail-ruby-client-{{ checksum "truemail-client.gemspec" }}
-
   bundle_install: &bundle_install
     run:
       name: Installing gems
       command: |
-            bundle config set --local path 'vendor/bundle'
+            bundle config set --local path '~/vendor/bundle'
             bundle install
 
-  save_bundle_cache: &save_bundle_cache
-    save_cache:
-      key: truemail-ruby-client-{{ checksum "truemail-client.gemspec" }}
-      paths:
-        - vendor/bundle
+  install_linters: &install_linters
+    run:
+      name: Installing bunch of linters
+      command: |
+            curl -1sLf 'https://dl.cloudsmith.io/public/evilmartians/lefthook/setup.deb.sh' | sudo -E bash
+            sudo apt-get update -y
+            sudo apt-get install -y lefthook shellcheck yamllint
+            npm install --prefix='~/.local' --global --save-dev git+https://github.com/streetsidesoftware/cspell-cli markdownlint-cli
+            cp .circleci/linter_configs/.fasterer.yml .fasterer.yml
+            cp .circleci/linter_configs/.lefthook.yml lefthook.yml
 
   install_codeclimate_reporter: &install_codeclimate_reporter
     run:
@@ -34,17 +36,20 @@ references:
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
 
+  use_latest_bundler: &use_latest_bundler
+    run:
+      name: Using latest bundler
+      command: gem install bundler
+
   use_latest_gemspec: &use_latest_gemspec
     run:
       name: Using latest gemspec
-      command: |
-            cp .circleci/gemspec_latest truemail-client.gemspec
+      command: cp .circleci/gemspecs/latest truemail-client.gemspec
 
   use_compatible_gemspec: &use_compatible_gemspec
     run:
       name: Using compatible gemspec
-      command: |
-            cp .circleci/gemspec_compatible truemail-client.gemspec
+      command: cp .circleci/gemspecs/compatible truemail-client.gemspec
 
 jobs:
   linters-ruby:
@@ -57,16 +62,30 @@ jobs:
     steps:
       - checkout
 
+      - <<: *use_latest_bundler
       - <<: *use_latest_gemspec
-      - <<: *restore_bundle_cache
       - <<: *bundle_install
-      - <<: *save_bundle_cache
+      - <<: *install_linters
 
       - run:
-          name: Running Overcommit
-          command: |
-            bundle exec overcommit -s
-            SKIP=AuthorEmail,AuthorName bundle exec overcommit -r
+          name: Running code style linters
+          command: lefthook run code-style-linters
+
+      - run:
+          name: Running code performance linters
+          command: lefthook run code-performance-linters
+
+      - run:
+          name: Running code vulnerability linters
+          command: lefthook run code-vulnerability-linters
+
+      - run:
+          name: Running code documentation linters
+          command: lefthook run code-documentation-linters
+
+      - run:
+          name: Running release linters
+          command: lefthook run release-linters
 
   tests-ruby:
     parameters:
@@ -78,10 +97,9 @@ jobs:
     steps:
       - checkout
 
+      - <<: *use_latest_bundler
       - <<: *use_latest_gemspec
-      - <<: *restore_bundle_cache
       - <<: *bundle_install
-      - <<: *save_bundle_cache
       - <<: *install_codeclimate_reporter
 
       - run:
@@ -109,31 +127,83 @@ jobs:
     parameters:
       ruby-version:
         type: string
-    docker:
-      - image: cimg/ruby:<< parameters.ruby-version >>
+
+    <<: *defaults
+
     steps:
       - checkout
+
       - <<: *use_compatible_gemspec
+
       - ruby/install-deps:
-          bundler-version: "2.3.9"
+          bundler-version: "2.3.26"
           with-cache: false
-          path: './vendor/custom_bundle'
+          path: '~/vendor/custom_bundle'
+
       - run:
           name: Running compatibility tests
           command: bundle exec rspec
 
+  rubygems-deps-ruby:
+    parameters:
+      ruby-version:
+        type: string
+
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - run:
+          name: Building rubygems dependencies from default gemspec on minimal Ruby version
+          command: bundle install
+
+  releasing-gem-ruby:
+    parameters:
+      ruby-version:
+        type: string
+
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - add_ssh_keys:
+          fingerprints:
+            - "5a:cb:84:35:44:17:1c:ef:77:41:a0:bc:29:20:77:35"
+
+      - run:
+          name: Publishing new release
+          command: ./.circleci/scripts/release.sh
+
 workflows:
-  build_and_test:
+  build_test_deploy:
     jobs:
       - linters-ruby:
           matrix:
             parameters:
-              ruby-version: ["3.1"]
+              ruby-version: ["3.2-node"]
       - tests-ruby:
           matrix:
             parameters:
-              ruby-version: ["3.1"]
+              ruby-version: ["3.2"]
       - compatibility-ruby:
           matrix:
             parameters:
-              ruby-version: ["2.5", "2.6", "2.7", "3.0"]
+              ruby-version: ["2.5", "2.6", "2.7", "3.0", "3.1"]
+      - rubygems-deps-ruby:
+          matrix:
+            parameters:
+              ruby-version: ["2.5"]
+      - releasing-gem-ruby:
+          requires:
+            - linters-ruby
+            - tests-ruby
+            - compatibility-ruby
+            - rubygems-deps-ruby
+          matrix:
+            parameters:
+              ruby-version: ["2.5"]
+          filters:
+            branches:
+              only: master

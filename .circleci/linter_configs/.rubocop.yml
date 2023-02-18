@@ -1,0 +1,146 @@
+---
+
+require:
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.5
+  SuggestExtensions: false
+  NewCops: enable
+
+# Metrics ---------------------------------------------------------------------
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/AbcSize:
+  Exclude:
+    - '../../lib/truemail/client/http.rb'
+
+# Naming ----------------------------------------------------------------------
+
+Naming/VariableNumber:
+  Enabled: false
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
+Naming/InclusiveLanguage:
+  Enabled: false
+
+# Style -----------------------------------------------------------------------
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/EmptyCaseCondition:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+Style/RedundantConstantBase:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Exclude:
+    - '../../lib/truemail/client/http.rb'
+
+# Layout ----------------------------------------------------------------------
+
+Layout/LineLength:
+  Max: 140
+
+Layout/ClassStructure:
+  Enabled: true
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+    associations:
+      - has_one
+      - has_many
+      - belongs_to
+      - has_and_belongs_to_many
+  ExpectedOrder:
+    - module_inclusion
+    - constants
+    - associations
+    - public_class_methods
+    - initializer
+    - public_methods
+    - protected_methods
+    - private_methods
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+# Lint ------------------------------------------------------------------------
+
+Lint/NoReturnInBeginEndBlocks:
+  Enabled: false
+
+# Gemspec ---------------------------------------------------------------------
+
+Gemspec/RequireMFA:
+  Enabled: false
+
+Gemspec/RubyVersionGlobalsUsage:
+  Enabled: false
+
+# RSpec -----------------------------------------------------------------------
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MultipleDescribes:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/StubbedMock:
+  Enabled: false
+
+RSpec/VerifiedDoubleReference:
+  Enabled: false

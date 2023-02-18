@@ -23,15 +23,12 @@ Gem::Specification.new do |spec|
   }
 
   spec.required_ruby_version = '>= 2.5.0'
+  spec.files = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(bin|lib)/|.ruby-version|truemail.gemspec|LICENSE}) }
+  spec.require_paths = %w[lib]
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = 'exe'
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| ::File.basename(f) }
-  spec.require_paths = ['lib']
-
-  spec.add_development_dependency 'ffaker', '~> 2.20'
+  spec.add_development_dependency 'ffaker', '~> 2.21'
   spec.add_development_dependency 'json_matchers', '~> 0.11.1'
   spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.6'
-  spec.add_development_dependency 'rspec', '~> 3.11'
-  spec.add_development_dependency 'webmock', '~> 3.14'
+  spec.add_development_dependency 'rspec', '~> 3.12'
+  spec.add_development_dependency 'webmock', '~> 3.18', '>= 3.18.1'
 end
