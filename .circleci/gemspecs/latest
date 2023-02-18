@@ -30,7 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'fasterer', '~> 0.10.0'
   spec.add_development_dependency 'ffaker', '~> 2.21'
   spec.add_development_dependency 'json_matchers', '~> 0.11.1'
-  spec.add_development_dependency 'overcommit', '~> 0.60.0'
   spec.add_development_dependency 'pry-byebug', '~> 3.10', '>= 3.10.1'
   spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.6'
   spec.add_development_dependency 'reek', '~> 6.1', '>= 6.1.4'

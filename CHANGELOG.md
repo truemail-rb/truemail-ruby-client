@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Updated gemspecs
-- Updated rubocop/codeclimate/circleci configs
+- Updated `rubocop`/`codeclimate`/`circleci` configs
 - Updated gem version
 
 ## [0.4.0] - 2022-01-26
@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Updated gemspecs
-- Updated rubocop/codeclimate/simplecov/circleci configs
+- Updated `rubocop`/`codeclimate`/`simplecov`/`circleci` configs
 - Updated gem version
 
 ## [0.3.4] - 2021-09-16
@@ -27,7 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Updated gem dependencies
-- Updated rubocop/codeclimate config
+- Updated `rubocop`/`codeclimate` config
 - Updated gem version
 
 ## [0.3.3] - 2021-07-13
@@ -39,7 +39,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Updated gem dependencies
-- Updated rubocop/codeclimate config
+- Updated `rubocop`/`codeclimate` config
 - Updated gem version
 
 ## [0.3.2] - 2021-05-19
@@ -51,7 +51,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Updated gem dependencies
-- Updated rubocop/codeclimate config
+- Updated `rubocop`/`codeclimate` config
 - Updated gem version
 
 ## [0.3.1] - 2021-05-08
@@ -59,7 +59,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Updated gem dependencies
-- Updated rubocop/codeclimate config
+- Updated `rubocop`/`codeclimate` config
 - Updated gem version
 
 ## [0.3.0] - 2020-10-28
