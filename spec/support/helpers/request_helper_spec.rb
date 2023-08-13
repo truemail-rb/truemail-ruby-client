@@ -37,7 +37,7 @@ RSpec.describe RequestHelper, type: :helper do
         path = ::URI::HTTP.build(
           path: endpoint,
           query: params.empty? ? nil : ::URI.encode_www_form(params)
-        ).request_uri.gsub(/%40/, '@')
+        ).request_uri.gsub('%40', '@')
         request = ::Net::HTTP::Get.new(URI("#{secure_connection ? 'https' : 'http'}://#{host}:#{port}#{path}"))
         request['User-Agent'] = user_agent
         request['Accept'] = accept
