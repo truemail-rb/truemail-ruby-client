@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RequestHelper, type: :helper do
+RSpec.describe Truemail::Client::RspecHelper::Request, type: :helper do
   describe '#have_sent_request_with' do
     let(:secure_connection) { true }
     let(:host) { FFaker::Internet.domain_name }

@@ -21,3 +21,4 @@ detectors:
 
 exclude_paths:
   - spec/support/helpers
+  - spec/truemail/client/rspec_helper
