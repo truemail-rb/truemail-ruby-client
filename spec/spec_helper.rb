@@ -15,8 +15,8 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  config.include ConfigurationHelper
-  config.include RequestHelper
+  config.include Truemail::Client::RspecHelper::Configuration
+  config.include Truemail::Client::RspecHelper::Request
   config.example_status_persistence_file_path = '.rspec_status'
   config.disable_monkey_patching!
   config.order = :random

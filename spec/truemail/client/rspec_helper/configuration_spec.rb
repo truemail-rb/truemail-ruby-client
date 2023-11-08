@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ConfigurationHelper, type: :helper do
+RSpec.describe Truemail::Client::RspecHelper::Configuration, type: :helper do
   describe '#configuration_block' do
     let(:configuration_params) { { param_1: 1, param_2: 2 } }
     let(:configuration_instance) { ::Struct.new(*configuration_params.keys).new }
