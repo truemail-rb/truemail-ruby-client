@@ -40,7 +40,7 @@ RSpec.describe Truemail::Client::Configuration do
       context 'when manual independent configuration' do
         shared_examples 'sets accessor' do
           it 'sets accessor' do
-            expect { configuration_instance.public_send("#{accessor}=", to_value) }
+            expect { configuration_instance.public_send(:"#{accessor}=", to_value) }
               .to change(configuration_instance, accessor)
               .from(from_value)
               .to(to_value)
@@ -50,7 +50,7 @@ RSpec.describe Truemail::Client::Configuration do
         shared_examples 'raises argument error' do
           specify do
             invalid_argument = -42
-            expect { configuration_instance.public_send("#{accessor}=", invalid_argument) }
+            expect { configuration_instance.public_send(:"#{accessor}=", invalid_argument) }
               .to raise_error(
                 Truemail::Client::Configuration::ArgumentError,
                 "#{invalid_argument} is not a valid #{accessor}"
