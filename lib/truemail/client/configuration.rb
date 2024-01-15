@@ -22,7 +22,7 @@ module Truemail
       end
 
       %i[host port token].each do |method|
-        define_method("#{method}=") do |argument|
+        define_method(:"#{method}=") do |argument|
           raise_unless(
             argument,
             __method__,
