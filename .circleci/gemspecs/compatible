@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Vladislav Trotsenko']
   spec.email         = ['admin@bestweb.com.ua']
 
-  spec.summary       = %(truemail-client)
+  spec.summary       = %(Truemail web API client library for Ruby)
   spec.description   = %(Truemail web API client library for Ruby)
 
   spec.homepage      = 'https://github.com/truemail-rb/truemail-ruby-client'
