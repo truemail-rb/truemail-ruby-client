@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Vladislav Trotsenko']
   spec.email         = ['admin@bestweb.com.ua']
 
-  spec.summary       = %(truemail-client)
+  spec.summary       = %(Truemail web API client library for Ruby)
   spec.description   = %(Truemail web API client library for Ruby)
 
   spec.homepage      = 'https://github.com/truemail-rb/truemail-ruby-client'
@@ -32,6 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'ffaker', ffaker_version
   spec.add_development_dependency 'json_matchers', '~> 0.11.1'
   spec.add_development_dependency 'rake', '~> 13.1'
-  spec.add_development_dependency 'rspec', '~> 3.12'
+  spec.add_development_dependency 'rspec', '~> 3.13'
   spec.add_development_dependency 'webmock', '~> 3.19', '>= 3.19.1'
 end
