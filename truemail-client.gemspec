@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'json_matchers', '~> 0.11.1'
   spec.add_development_dependency 'rake', '~> 13.1'
   spec.add_development_dependency 'rspec', '~> 3.13'
-  spec.add_development_dependency 'webmock', '~> 3.19', '>= 3.19.1'
+  spec.add_development_dependency 'webmock', '~> 3.23'
 end
